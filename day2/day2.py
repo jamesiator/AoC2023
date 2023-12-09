@@ -33,7 +33,27 @@ def part1(lines: [str]):
   return game_id_sum
 
 def part2(lines: [str]):
-  pass
+  def game_power(line: str):
+    min_quantities = {
+      RED: 0,
+      GREEN: 0,
+      BLUE: 0
+    }
+    _, reveals = line.split(': ')
+    
+    for reveal in reveals.split('; '):
+      for color_reveal in reveal.split(', '):
+        quantity, color = color_reveal.split(' ')
+        if int(quantity) > min_quantities[color]: 
+          min_quantities[color] = int(quantity)
+
+    return min_quantities[RED] * min_quantities[GREEN] * min_quantities[BLUE]
+
+  game_power_sum = 0
+  for line in lines:
+    game_power_sum += game_power(line)
+
+  return game_power_sum
 
 def main():
   _, part = sys.argv
