@@ -4,6 +4,16 @@ from input import input
 import sys
 
 def part1(lines: list[str]):
+  
+  def sum_neighboring_numbers(row: int, col: int):
+    pass
+  
+  schematic_sum = 0
+  for i in range(lines):
+    for j in range(len(lines[i])):
+      if lines[i][j] != '.' and not lines[i][j].isdigit():
+        schematic_sum += sum_neighboring_numbers(i, j)
+
   return 0
 
 def part2(lines: list[str]):
